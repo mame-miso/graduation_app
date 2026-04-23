@@ -1,14 +1,18 @@
 <h1>場所編集</h1>
 
-<%= form_with model: @place do |f| %>
-  <div>
-    <%= f.label :name, "場所名" %>
-    <%= f.text_field :name %>
-  </div>
+<div class="card">
+  <%= form_with model: @place do |f| %>
+    <div class="form-group">
+      <%= f.label :name, "場所名" %>
+      <%= f.text_field :name %>
+    </div>
 
-  <div>
-    <%= f.submit "更新" %>
-  </div>
-<% end %>
+    <div>
+      <%= f.submit "更新" %>
+    </div>
+  <% end %>
+</div>
 
-<%= link_to "場所詳細へ", place_path(@place) %>
+<p>
+  <%= link_to "場所詳細へ", place_path(@place) %>
+</p>
