@@ -1,16 +1,20 @@
 <h1>写真登録</h1>
 
-<p>場所名: <%= @place.name %></p>
+<div class="card">
+  <p><strong>場所名:</strong> <%= @place.name %></p>
 
-<%= form_with model: [@place, @item], local: true do |f| %>
-  <div>
-    <%= f.label :image, "写真" %>
-    <%= f.file_field :image %>
-  </div>
+  <%= form_with model: [@place, @item], local: true do |f| %>
+    <div class="form-group">
+      <%= f.label :image, "写真" %>
+      <%= f.file_field :image %>
+    </div>
 
-  <div>
-    <%= f.submit "登録" %>
-  </div>
-<% end %>
+    <div>
+      <%= f.submit "登録" %>
+    </div>
+  <% end %>
+</div>
 
-<%= link_to "場所詳細へ戻る", place_path(@place) %>
+<p>
+  <%= link_to "場所詳細へ戻る", place_path(@place) %>
+</p>

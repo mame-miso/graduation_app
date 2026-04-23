@@ -1,28 +1,31 @@
 <h1>場所詳細</h1>
 
-<p>場所名: <%= @place.name %></p>
+<div class="card">
+  <p><strong>場所名:</strong> <%= @place.name %></p>
 
-<%= link_to "写真を追加", new_place_item_path(@place) %>
-<%= link_to "編集", edit_place_path(@place) %>
-<%= button_to "削除", place_path(@place), method: :delete, data: { turbo_confirm: "削除しますか？" } %>
-<%= link_to "場所一覧へ", places_path %>
-
-<hr>
+  <div class="place-actions">
+    <%= link_to "写真を追加", new_place_item_path(@place), class: "button" %>
+    <%= link_to "編集", edit_place_path(@place), class: "button" %>
+    <%= button_to "削除", place_path(@place), method: :delete, data: { turbo_confirm: "削除しますか？" } %>
+    <%= link_to "場所一覧へ", places_path %>
+  </div>
+</div>
 
 <h2>写真一覧</h2>
 
 <% if @place.items.any? %>
   <% @place.items.each do |item| %>
     <% if item.image.attached? %>
-      <div>
-        <%= image_tag item.image, width: 200 %>
-        <%= button_to "削除",
-              place_item_path(@place, item),
-              method: :delete,
-              data: { turbo_confirm: "削除しますか？" } %>
+      <div class="card item-image">
+        <%= image_tag item.image, width: 220 %>
+        <div class="place-actions">
+          <%= button_to "削除", place_item_path(@place, item), method: :delete, data: { turbo_confirm: "削除しますか？" } %>
+        </div>
       </div>
     <% end %>
   <% end %>
 <% else %>
-  <p>まだ写真はありません</p>
+  <div class="card">
+    <p>まだ写真はありません</p>
+  </div>
 <% end %>

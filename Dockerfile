@@ -1,7 +1,7 @@
 FROM ruby:3.2
 
 RUN apt-get update -qq && \
-    apt-get install -y build-essential default-libmysqlclient-dev nodejs && \
+    apt-get install -y build-essential libpq-dev nodejs && \
     rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app

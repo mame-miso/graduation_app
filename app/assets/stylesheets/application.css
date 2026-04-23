@@ -1,15 +1,167 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+/* 全体 */
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background-color: #f5f6f8;
+  color: #333;
+}
+
+a {
+  text-decoration: none;
+  color: #3d6fdb;
+}
+
+a:hover {
+  opacity: 0.8;
+}
+
+/* 共通レイアウト */
+.container {
+  width: 90%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 24px 0;
+}
+
+/* ヘッダー */
+.site-header {
+  background-color: #ffffff;
+  border-bottom: 1px solid #ddd;
+  padding: 16px 0;
+}
+
+.site-header-inner {
+  width: 90%;
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.site-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* フッター */
+.site-footer {
+  margin-top: 40px;
+  padding: 16px 0;
+  text-align: center;
+  color: #777;
+  font-size: 14px;
+}
+
+/* 見出し */
+h1 {
+  margin-bottom: 20px;
+  font-size: 28px;
+}
+
+h2 {
+  margin-top: 32px;
+  margin-bottom: 16px;
+  font-size: 22px;
+}
+
+/* ボタン風リンク・送信ボタン */
+.button,
+input[type="submit"],
+button {
+  display: inline-block;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  background-color: #2550ad;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.button:hover,
+input[type="submit"]:hover,
+button:hover {
+  opacity: 0.9;
+}
+
+/* 削除ボタン */
+form.button_to {
+  display: inline-block;
+  margin: 0;
+}
+
+form.button_to button {
+  background-color: #4f7dd9;
+}
+
+/* フォーム */
+.form-group {
+  margin-bottom: 16px;
+}
+
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="file"] {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+  background-color: white;
+}
+
+/* カード */
+.card {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 16px;
+}
+
+/* 場所一覧 */
+.place-list {
+  list-style: none;
+  padding: 0;
+}
+
+.place-item {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 12px;
+  background-color: white;
+}
+
+.place-name {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.place-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* 画像一覧 */
+.item-image {
+  margin-bottom: 16px;
+}
+
+.item-image img {
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
