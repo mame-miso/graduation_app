@@ -1,0 +1,16 @@
+<h1>写真登録</h1>
+
+<p>場所名: <%= @place.name %></p>
+
+<%= form_with model: [@place, @item], local: true do |f| %>
+  <div>
+    <%= f.label :image, "写真" %>
+    <%= f.file_field :image %>
+  </div>
+
+  <div>
+    <%= f.submit "登録" %>
+  </div>
+<% end %>
+
+<%= link_to "場所詳細へ戻る", place_path(@place) %>

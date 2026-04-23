@@ -1,0 +1,12 @@
+<h1>場所作成</h1>
+
+<%= form_with model: @place do |f| %>
+  <div>
+    <%= f.label :name, "場所名" %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div>
+    <%= f.submit "作成" %>
+  </div>
+<% end %>
