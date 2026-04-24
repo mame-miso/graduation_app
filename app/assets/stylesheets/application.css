@@ -196,3 +196,9 @@ input[type="file"] {
 .place-info {
   flex: 1;
 }
+
+.item-image img,
+.place-thumbnail,
+.card img {
+  cursor: zoom-in;
+}

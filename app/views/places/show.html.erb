@@ -22,7 +22,9 @@
   <% @place.items.each do |item| %>
     <% if item.image.attached? %>
       <div class="card item-image">
-        <%= image_tag item.image, width: 220 %>
+        <%= link_to url_for(item.image), target: "_blank", rel: "noopener" do %>
+          <%= image_tag item.image, width: 220 %>
+        <% end %>
         <div class="place-actions">
           <%= button_to "削除", place_item_path(@place, item), method: :delete, data: { turbo_confirm: "削除しますか？" } %>
         </div>

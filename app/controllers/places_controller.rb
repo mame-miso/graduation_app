@@ -3,7 +3,11 @@ class PlacesController < ApplicationController
   before_action :set_place, only: [:show, :edit, :update, :destroy]
 
   def index
-    @places = current_user.places.includes(items: [image_attachment: :blob])
+    @places = current_user.places
+                          .left_joins(:items)
+                          .group(:id)
+                          .order(Arel.sql("MAX(items.created_at) DESC NULLS LAST, places.created_at DESC"))
+                          .with_attached_cover_image
   end
 
   def show
