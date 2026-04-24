@@ -4,6 +4,10 @@ class PlacesController < ApplicationController
 
   def index
     @places = current_user.places
+                          .left_joins(:items)
+                          .group(:id)
+                          .order(Arel.sql("MAX(items.created_at) DESC NULLS LAST, places.created_at DESC"))
+                          .with_attached_cover_image
   end
 
   def show
@@ -11,18 +15,17 @@ class PlacesController < ApplicationController
 
   def new
     @place = Place.new
+    @item = Item.new
   end
 
   def create
     @place = current_user.places.build(place_params)
+
     if @place.save
       redirect_to @place, notice: "場所を作成しました"
     else
       render :new, status: :unprocessable_entity
     end
-  end
-
-  def edit
   end
 
   def update
@@ -45,6 +48,6 @@ class PlacesController < ApplicationController
   end
 
   def place_params
-    params.require(:place).permit(:name)
+    params.require(:place).permit(:name, :cover_image)
   end
 end

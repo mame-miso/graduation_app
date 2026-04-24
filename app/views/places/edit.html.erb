@@ -3,7 +3,18 @@
 <div class="card">
   <%= form_with model: @place do |f| %>
     <div class="form-group">
-      <%= f.label :name, "場所名" %>
+      <%= f.label :cover_image, "場所の写真" %>
+      <%= f.file_field :cover_image %>
+    </div>
+
+    <% if @place.cover_image.attached? %>
+      <div class="form-group">
+        <%= image_tag @place.cover_image, width: 200 %>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= f.label :name, "場所名（任意）" %>
       <%= f.text_field :name %>
     </div>
 
@@ -12,7 +23,3 @@
     </div>
   <% end %>
 </div>
-
-<p>
-  <%= link_to "場所詳細へ", place_path(@place) %>
-</p>
