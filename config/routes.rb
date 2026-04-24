@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root "homes#top"
+  root "places#index"
 
   resources :places do
     resources :items, only: [:new, :create, :destroy]
