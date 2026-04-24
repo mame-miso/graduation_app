@@ -6,14 +6,26 @@
 
 <ul class="place-list">
   <% @places.each do |place| %>
-    <li class="place-item">
-      <div class="place-name">
-        <%= link_to place.name, place_path(place) %>
-      </div>
+    <li class="place-item place-item-with-image">
+      <%= link_to place_path(place), class: "place-thumbnail-link" do %>
+        <% if place.cover_image.attached? %>
+          <%= image_tag place.cover_image, class: "place-thumbnail" %>
+        <% else %>
+          <div class="place-thumbnail place-thumbnail-empty">
+            No Image
+          </div>
+        <% end %>
+      <% end %>
 
-      <div class="place-actions">
-        <%= link_to "編集", edit_place_path(place), class: "button" %>
-        <%= button_to "削除", place_path(place), method: :delete, data: { turbo_confirm: "削除しますか？" } %>
+      <div class="place-info">
+        <div class="place-name">
+          <%= link_to place.name.presence || "写真で登録した場所", place_path(place) %>
+        </div>
+
+        <div class="place-actions">
+          <%= link_to "編集", edit_place_path(place), class: "button" %>
+          <%= button_to "削除", place_path(place), method: :delete, data: { turbo_confirm: "削除しますか？" } %>
+        </div>
       </div>
     </li>
   <% end %>

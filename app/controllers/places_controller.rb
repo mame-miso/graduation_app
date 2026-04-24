@@ -3,7 +3,7 @@ class PlacesController < ApplicationController
   before_action :set_place, only: [:show, :edit, :update, :destroy]
 
   def index
-    @places = current_user.places
+    @places = current_user.places.includes(items: [image_attachment: :blob])
   end
 
   def show
@@ -11,18 +11,17 @@ class PlacesController < ApplicationController
 
   def new
     @place = Place.new
+    @item = Item.new
   end
 
   def create
     @place = current_user.places.build(place_params)
+
     if @place.save
       redirect_to @place, notice: "場所を作成しました"
     else
       render :new, status: :unprocessable_entity
     end
-  end
-
-  def edit
   end
 
   def update
@@ -45,6 +44,6 @@ class PlacesController < ApplicationController
   end
 
   def place_params
-    params.require(:place).permit(:name)
+    params.require(:place).permit(:name, :cover_image)
   end
 end

@@ -1,17 +1,22 @@
 <h1>場所詳細</h1>
 
 <div class="card">
-  <p><strong>場所名:</strong> <%= @place.name %></p>
+  <p><strong>場所名:</strong> <%= @place.name.presence || "写真で登録した場所" %></p>
+
+  <% if @place.cover_image.attached? %>
+    <p><strong>場所の写真:</strong></p>
+    <%= image_tag @place.cover_image, width: 240 %>
+  <% end %>
 
   <div class="place-actions">
-    <%= link_to "写真を追加", new_place_item_path(@place), class: "button" %>
+    <%= link_to "中身の写真を追加", new_place_item_path(@place), class: "button" %>
     <%= link_to "編集", edit_place_path(@place), class: "button" %>
     <%= button_to "削除", place_path(@place), method: :delete, data: { turbo_confirm: "削除しますか？" } %>
     <%= link_to "場所一覧へ", places_path %>
   </div>
 </div>
 
-<h2>写真一覧</h2>
+<h2>中身の写真一覧</h2>
 
 <% if @place.items.any? %>
   <% @place.items.each do |item| %>
@@ -26,6 +31,6 @@
   <% end %>
 <% else %>
   <div class="card">
-    <p>まだ写真はありません</p>
+    <p>まだ中身の写真はありません</p>
   </div>
 <% end %>

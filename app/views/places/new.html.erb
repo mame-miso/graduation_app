@@ -1,14 +1,21 @@
-<h1>場所作成</h1>
+<h1>場所を追加</h1>
 
 <div class="card">
+  <p>まずは写真だけでも場所を登録できます。場所名はあとから編集できます。</p>
+
   <%= form_with model: @place do |f| %>
     <div class="form-group">
-      <%= f.label :name, "場所名" %>
-      <%= f.text_field :name %>
+      <%= f.label :cover_image, "場所の写真（任意）" %>
+      <%= f.file_field :cover_image %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :name, "場所名（任意）" %>
+      <%= f.text_field :name, placeholder: "例：クローゼット、押し入れ、本棚" %>
     </div>
 
     <div>
-      <%= f.submit "作成" %>
+      <%= f.submit "場所を作成" %>
     </div>
   <% end %>
 </div>
