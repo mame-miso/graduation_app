@@ -202,3 +202,11 @@ input[type="file"] {
 .card img {
   cursor: zoom-in;
 }
+
+.alert-error {
+  background: #fdecea;
+  color: #b71c1c;
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 16px;
+}
