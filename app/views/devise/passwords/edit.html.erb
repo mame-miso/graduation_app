@@ -1,0 +1,29 @@
+<h2>パスワード再設定</h2>
+
+<p>新しいパスワードを入力してください</p>
+
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+  <%= f.hidden_field :reset_password_token %>
+
+  <div class="field">
+    <p><%= f.label :password, "新しいパスワード" %></p>
+    <% if @minimum_password_length %>
+      <p><small><%= @minimum_password_length %>文字以上で入力してください</small></p>
+    <% end %>
+    <p><%= f.password_field :password, autofocus: true, autocomplete: "new-password" %></p>
+  </div>
+
+  <div class="field">
+    <p><%= f.label :password_confirmation, "新しいパスワード（確認）" %></p>
+    <p><%= f.password_field :password_confirmation, autocomplete: "new-password" %></p>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "パスワードを変更する", class: "button" %>
+  </div>
+<% end %>
+
+<p>
+  <%= link_to "ログイン画面に戻る", new_session_path(resource_name) %>
+</p>
