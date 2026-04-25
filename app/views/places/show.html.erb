@@ -5,7 +5,7 @@
 
   <% if @place.cover_image.attached? %>
     <p><strong>場所の写真:</strong></p>
-    <%= image_tag @place.cover_image, width: 240 %>
+    <%= image_tag @place.cover_image, width: 240, class: "js-image" %>
   <% end %>
 
   <div class="place-actions">
@@ -22,9 +22,7 @@
   <% @place.items.each do |item| %>
     <% if item.image.attached? %>
       <div class="card item-image">
-        <%= link_to url_for(item.image), target: "_blank", rel: "noopener" do %>
-          <%= image_tag item.image, width: 220 %>
-        <% end %>
+          <%= image_tag item.image, width: 220, class: "js-image" %>
         <div class="place-actions">
           <%= button_to "削除", place_item_path(@place, item), method: :delete, data: { turbo_confirm: "削除しますか？" } %>
         </div>
@@ -36,3 +34,8 @@
     <p>まだ中身の写真はありません</p>
   </div>
 <% end %>
+
+<div id="image-modal" class="modal">
+  <span class="modal-close">&times;</span>
+  <img class="modal-content" id="modal-image">
+</div>
