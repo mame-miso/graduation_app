@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   </head>
 
@@ -28,11 +28,15 @@
 
     <main class="container">
       <% if notice.present? %>
-        <p><%= notice %></p>
+        <div class="flash-message notice">
+          <%= notice %>
+        </div>
       <% end %>
 
       <% if alert.present? %>
-        <p><%= alert %></p>
+        <div class="flash-message alert">
+          <%= alert %>
+        </div>
       <% end %>
 
       <%= yield %>

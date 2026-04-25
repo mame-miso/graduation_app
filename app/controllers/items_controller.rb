@@ -11,6 +11,7 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to @place, notice: "写真を登録しました"
     else
+      flash.now[:alert] = "写真を選択してください"
       render :new, status: :unprocessable_entity
     end
   end
@@ -28,6 +29,6 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:image)
+    params.fetch(:item, {}).permit(:image)
   end
 end
