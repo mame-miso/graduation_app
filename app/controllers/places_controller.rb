@@ -2,6 +2,8 @@ class PlacesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_place, only: [:show, :edit, :update, :destroy]
 
+  rescue_from ActiveRecord::RecordNotFound, with: :redirect_to_places
+
   def index
     @places = current_user.places
                           .left_joins(:items)
@@ -49,5 +51,9 @@ class PlacesController < ApplicationController
 
   def place_params
     params.require(:place).permit(:name, :cover_image)
+  end
+
+  def redirect_to_places
+  redirect_to places_path, alert: "指定された場所は見つかりません"
   end
 end
