@@ -9,7 +9,7 @@ class Place < ApplicationRecord
 
   def name_or_cover_image_present
     if name.blank? && !cover_image.attached?
-      errors.add(:base, "場所名または写真のどちらかを登録してください")
+      errors.add(:base, "場所名か写真を入力してください")
     end
   end
 end
