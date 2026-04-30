@@ -5,24 +5,16 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   </head>
 
   <body>
-    <header class="site-header">
-      <div class="site-header-inner">
-        <%= link_to "Aredoko", root_path, class: "site-title" %>
-
-        <div>
-          <% if user_signed_in? %>
-            <%= link_to "場所一覧", places_path %>
-            <%= button_to "ログアウト", destroy_user_session_path, method: :delete %>
-          <% else %>
-            <%= link_to "新規登録", new_user_registration_path %>
-            <%= link_to "ログイン", new_user_session_path %>
-          <% end %>
-        </div>
+   <div class="app-shell">
+    <header class="app-header">
+      <div class="app-title">
+        <%= content_for?(:page_title) ? yield(:page_title) : "あれ??ここ?" %>
       </div>
     </header>
 
@@ -42,8 +34,44 @@
       <%= yield %>
     </main>
 
-    <footer class="site-footer">
-      <p>© mameta</p>
+    <footer class="app-footer">
+        <!-- 左：ロゴ -->
+      <div class="footer-left">
+        <%= image_tag "logo.svg", class: "footer-logo-img" %>
+      </div>
+
+      <!-- 中央：コピーライト -->
+      <div class="footer-center">
+        © mameta
+      </div>
+        <div class="footer-icon" id="menu-toggle">
+          ☰
+        </div>
+      </div>
     </footer>
+      <div id="side-menu" class="side-menu">
+        <div class="side-menu-content">
+
+         <% if user_signed_in? %>
+            <%= button_to "ログアウト",
+                  destroy_user_session_path,
+                  method: :delete,
+                  class: "menu-item" %>
+          <% else %>
+            <%= link_to "ログイン", new_user_session_path, class: "menu-item" %>
+            <%= link_to "新規登録", new_user_registration_path, class: "menu-item" %>
+          <% end %>
+     </div>
+</div>
+
+
+
+
+
+
+
+
+
+   </div>
   </body>
 </html>
