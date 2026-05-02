@@ -1,39 +1,55 @@
 <% content_for :page_title, "収納したアイテム" %>
 
-<div class="card">
-  <p><strong>場所名:</strong> <%= @place.name.presence || "写真で登録した場所" %></p>
+<div class="place-detail-page">
+  <div class="items-area">
+    <% if @place.items.any? %>
+      <ul class="item-list">
+        <% @place.items.each do |item| %>
+          <% if item.image.attached? %>
+            <li class="item-card">
+              <%= image_tag item.image, class: "item-thumbnail js-image" %>
 
-  <% if @place.cover_image.attached? %>
-    <p><strong>場所の写真:</strong></p>
-    <%= image_tag @place.cover_image, width: 240, class: "js-image" %>
-  <% end %>
-
-  <div class="place-actions">
-    <%= link_to "中身の写真を追加", new_place_item_path(@place), class: "button" %>
-    <%= link_to "編集", edit_place_path(@place), class: "button" %>
-    <%= button_to "削除", place_path(@place), method: :delete, data: { turbo_confirm: "削除しますか？" } %>
-    <%= link_to "場所一覧へ", places_path %>
-  </div>
-</div>
-
-<h2>中身の写真一覧</h2>
-
-<% if @place.items.any? %>
-  <% @place.items.each do |item| %>
-    <% if item.image.attached? %>
-      <div class="card item-image">
-          <%= image_tag item.image, width: 220, class: "js-image" %>
-        <div class="place-actions">
-          <%= button_to "削除", place_item_path(@place, item), method: :delete, data: { turbo_confirm: "削除しますか？" } %>
-        </div>
+              <%= button_to "",
+                    place_item_path(@place, item),
+                    method: :delete,
+                    data: { turbo_confirm: "削除しますか？" },
+                    class: "item-delete-button",
+                    aria: { label: "削除" } %>
+            </li>
+          <% end %>
+        <% end %>
+      </ul>
+    <% else %>
+      <div class="empty-state">
+        <p class="empty-title">まだアイテムが登録されていません</p>
+        <p class="empty-text">この場所にしまった物を写真で登録しましょう。</p>
       </div>
     <% end %>
-  <% end %>
-<% else %>
-  <div class="card">
-    <p>まだ中身の写真はありません</p>
+
+    <div class="fixed-add-button-wrap">
+      <%= link_to "＋ アイテム追加", new_place_item_path(@place), class: "button primary-button large-add-button" %>
+    </div>
   </div>
-<% end %>
+
+  <aside class="place-side-panel">
+    <div class="side-place-card">
+     <%= link_to places_path do %>
+      <% if @place.cover_image.attached? %>
+        <%= image_tag @place.cover_image, class: "side-place-image" %>
+      <% else %>
+        <div class="side-place-image side-place-empty">No Image</div>
+      <% end %>
+    <% end %>
+      <div class="side-place-name">
+      <%= link_to places_path do %>
+        <%= @place.name.presence || "" %>
+      <% end %>
+      </div>
+    </div>
+
+    <%= link_to "収納場所に戻る", places_path, class: "back-link" %>
+  </aside>
+</div>
 
 <div id="image-modal" class="modal">
   <span class="modal-close">&times;</span>
