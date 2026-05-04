@@ -12,7 +12,13 @@
   <%= form_with model: @place do |f| %>
     <div class="form-group">
       <%= f.label :cover_image, "場所の写真（写真を変更する場合は、新しい写真を選択してください）" %>
-      <%= f.file_field :cover_image %>
+      <%= f.file_field :cover_image,
+        accept: "cover_image/*",
+        capture: "environment",
+        onchange: "previewImage(event)" %>
+
+      <!-- ここにプレビュー -->
+      <img id="preview" style="display:none; width:200px; margin-top:10px;">
     </div>
 
     <% if @place.cover_image.attached? %>

@@ -57,3 +57,13 @@ document.addEventListener("click", (event) => {
     checkedCountEl.textContent = checkedCount;
   }
 });
+
+function previewImage(event) {
+  const file = event.target.files[0];
+  const preview = document.getElementById("preview");
+
+  if (!file || !preview) return;
+
+  preview.src = URL.createObjectURL(file);
+  preview.style.display = "block";
+}

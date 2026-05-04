@@ -1,12 +1,17 @@
 <% content_for :page_title, "アイテム登録" %>
 
 <div class="card">
-  <p><strong>場所名:</strong> <%= @place.name %></p>
 
   <%= form_with model: [@place, @item], local: true do |f| %>
     <div class="form-group">
-      <%= f.label :image, "写真" %>
-      <%= f.file_field :image %>
+      <%= f.label :image, "写真を撮影して追加" %>
+      <%= f.file_field :image,
+        accept: "image/*",
+        capture: "environment",
+        onchange: "previewImage(event)" %>
+
+      <!-- ここにプレビュー -->
+      <img id="preview" style="display:none; width:200px; margin-top:10px;">
     </div>
 
     <div>
