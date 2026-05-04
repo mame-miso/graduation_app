@@ -71,23 +71,24 @@ Rails.application.configure do
   # config.active_job.queue_adapter = :resque
   # config.active_job.queue_name_prefix = "app_production"
 
-  config.action_mailer.perform_caching = false
+config.action_mailer.perform_caching = false
+config.action_mailer.raise_delivery_errors = true
 
-  config.action_mailer.delivery_method = :smtp
+config.action_mailer.default_url_options = {
+  host: "graduation-app-m7ki.onrender.com",
+  protocol: "https"
+}
 
-  config.action_mailer.smtp_settings = {
+config.action_mailer.delivery_method = :smtp
+
+config.action_mailer.smtp_settings = {
   address: "smtp-relay.brevo.com",
   port: 587,
-  domain: ENV["APP_HOST"],
+  domain: "graduation-app-m7ki.onrender.com",
   user_name: ENV["BREVO_USER"],
   password: ENV["BREVO_PASSWORD"],
   authentication: :login,
   enable_starttls_auto: true
-}
-
-  config.action_mailer.default_url_options = {
-  host: 'graduation-app-m7ki.onrender.com',
-  protocol: 'https'
 }
 
   # Ignore bad email addresses and do not raise email delivery errors.
