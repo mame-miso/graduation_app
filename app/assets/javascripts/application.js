@@ -42,3 +42,18 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+document.addEventListener("click", (event) => {
+  const checkButton = event.target.closest(".item-check-button");
+
+  if (!checkButton) return;
+
+  checkButton.classList.toggle("is-checked");
+
+  const checkedCount = document.querySelectorAll(".item-check-button.is-checked").length;
+  const checkedCountEl = document.getElementById("checked-item-count");
+
+  if (checkedCountEl) {
+    checkedCountEl.textContent = checkedCount;
+  }
+});

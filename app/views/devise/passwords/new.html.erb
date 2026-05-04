@@ -1,16 +1,35 @@
-<h2>パスワードをわすれましたか?</h2>
+<% content_for :page_title, "" %>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <p><%= f.label :email %></p>
-    <p><%= f.email_field :email, autofocus: true, autocomplete: "email" %></p>
+<div class="auth-page">
+  <div class="auth-logo">
+    <%= image_tag "Are_Koko.svg", alt: "あれ??ここ！", class: "auth-logo-image" %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Send me password reset instructions" %>
-  </div>
-<% end %>
+  <div class="auth-card">
+    <h2 class="auth-title">パスワード再設定</h2>
 
-<%= render "devise/shared/links" %>
+    <p class="auth-description">
+      登録したメールアドレスを入力してください。<br>
+      再設定用のリンクを送信します。
+    </p>
+
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+
+      <%= render "devise/shared/error_messages", resource: resource %>
+
+      <div class="form-group">
+        <%= f.label :email, "メールアドレス" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      </div>
+
+      <div class="form-actions">
+        <%= f.submit "送信する", class: "btn-primary auth-submit" %>
+      </div>
+    <% end %>
+
+    <div class="auth-links">
+      <%= link_to "ログインに戻る", new_session_path(resource_name) %>
+      <%= link_to "新規登録はこちら", new_registration_path(resource_name) %>
+    </div>
+  </div>
+</div>

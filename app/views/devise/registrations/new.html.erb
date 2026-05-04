@@ -1,32 +1,38 @@
-<h2>新規登録</h2>
+<% content_for :page_title, "" %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <p><%= f.label :email, "メールアドレス" %></p>
-    <p><%= f.email_field :email, autofocus: true, autocomplete: "email" %></p>
+<div class="auth-page">
+  <div class="auth-logo">
+    <%= image_tag "Are_Koko.svg", alt: "あれ??ここ！", class: "auth-logo-image" %>
   </div>
 
-  <div class="field">
-    <p><%= f.label :password, "パスワード" %></p>
-    <% if @minimum_password_length %>
-      <p><small><%= @minimum_password_length %>文字以上で入力してください</small></p>
+  <div class="auth-card">
+    <h2 class="auth-title">新規登録</h2>
+
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+
+      <div class="form-group">
+        <%= f.label :email, "メールアドレス" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :password, "パスワード" %>
+        <%= f.password_field :password, autocomplete: "new-password" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :password_confirmation, "パスワード確認" %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+      </div>
+
+      <div class="form-actions">
+        <%= f.submit "登録する", class: "btn-primary auth-submit" %>
+      </div>
     <% end %>
-    <p><%= f.password_field :password, autocomplete: "new-password" %></p>
-  </div>
 
-  <div class="field">
-    <p><%= f.label :password_confirmation, "パスワード（確認）" %></p>
-    <p><%= f.password_field :password_confirmation, autocomplete: "new-password" %></p>
+    <div class="auth-links">
+      <%= link_to "ログインはこちら", new_session_path(resource_name) %>
+    </div>
   </div>
-
-  <div class="actions">
-    <%= f.submit "新規登録", class: "button" %>
-  </div>
-<% end %>
-
-<p>
-  すでにアカウントをお持ちの方は
-  <%= link_to "ログイン", new_session_path(resource_name) %>
-</p>
+</div>

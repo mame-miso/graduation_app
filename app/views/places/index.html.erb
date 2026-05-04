@@ -4,7 +4,7 @@
   <% if @places.empty? %>
     <div class="empty-state">
       <p class="empty-title">まだ収納場所が登録されていません</p>
-      <p class="empty-text">まずは、物をしまっている場所を登録してみましょう。</p>
+      <p class="empty-text">まずは、物をしまう場所を登録お願いします！</p>
 
       <%= link_to "＋ 収納場所追加", new_place_path, class: "button primary-button" %>
     </div>
@@ -23,7 +23,7 @@
            <% end %>
 
           <%= link_to place_path(place), class: "place-name-overlay" do %>
-            <%= place.name.presence || "名称未設定" %>
+            <%= place.name.presence || "" %>
           <% end %>
 
           <%= link_to edit_place_path(place), class: "place-edit-button", aria: { label: "編集" } do %>
