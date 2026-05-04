@@ -42,3 +42,28 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+document.addEventListener("click", (event) => {
+  const checkButton = event.target.closest(".item-check-button");
+
+  if (!checkButton) return;
+
+  checkButton.classList.toggle("is-checked");
+
+  const checkedCount = document.querySelectorAll(".item-check-button.is-checked").length;
+  const checkedCountEl = document.getElementById("checked-item-count");
+
+  if (checkedCountEl) {
+    checkedCountEl.textContent = checkedCount;
+  }
+});
+
+function previewImage(event) {
+  const file = event.target.files[0];
+  const preview = document.getElementById("preview");
+
+  if (!file || !preview) return;
+
+  preview.src = URL.createObjectURL(file);
+  preview.style.display = "block";
+}

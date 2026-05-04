@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Aredoko</title>
+    <title>あれ??ここ!</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -14,7 +14,7 @@
    <div class="app-shell">
     <header class="app-header">
       <div class="app-title">
-        <%= content_for?(:page_title) ? yield(:page_title) : "あれ??ここ?" %>
+        <%= content_for?(:page_title) ? yield(:page_title) : "" %>
       </div>
     </header>
 
@@ -37,7 +37,7 @@
     <footer class="app-footer">
         <!-- 左：ロゴ -->
       <div class="footer-left">
-        <%= image_tag "logo.svg", class: "footer-logo-img" %>
+        <%= image_tag "arekoko-mono.svg", class: "footer-logo-img" %>
       </div>
 
       <!-- 中央：コピーライト -->

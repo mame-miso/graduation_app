@@ -17,3 +17,6 @@ ja:
     passwords:
       send_instructions: "パスワード再設定用のメールを送信しました。"
       updated: "パスワードが変更されました。"
+    mailer:
+      reset_password_instructions:
+        subject: "【あれ??ここ！】パスワード再設定のご案内"

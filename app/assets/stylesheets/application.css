@@ -800,3 +800,107 @@ input[type="file"] {
   cursor: pointer;
   border-radius: 0;
 }
+
+/* =====================
+   アイテムチェックボタン
+===================== */
+.item-check-button {
+  position: absolute;
+  bottom: 18px;
+  left: 18px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  background: rgba(200, 180, 212, 0.45);
+  cursor: pointer;
+  z-index: 2;
+}
+
+.item-check-button::before {
+  content: "";
+  position: absolute;
+  left: 11px;
+  bottom: 6px;
+  width: 14px;
+  height: 24px;
+  border-right: 4px solid #fff;
+  border-bottom: 4px solid #fff;
+  transform: rotate(45deg);
+  opacity: 0;
+}
+
+.item-check-button.is-checked {
+  background: rgba(0, 0, 0, 0.65);
+}
+
+.item-check-button.is-checked::before {
+  opacity: 1;
+}
+
+.item-count-box {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 14px;
+  background: #fff;
+  border-radius: 12px;
+  font-size: 15px;
+  color: #333;
+}
+
+.item-count-box p {
+  margin: 6px 0;
+}
+
+/* =====================
+   ログイン画面
+===================== */
+.auth-title {
+  margin: 0 0 24px;
+  text-align: center;
+  font-size: 24px;
+}
+
+.auth-submit {
+  width: 100%;
+  margin-top: 8px;
+}
+
+.auth-links {
+  margin-top: 20px;
+  display: grid;
+  gap: 10px;
+  text-align: center;
+}
+
+.auth-links a {
+  color: #046eb8;
+  font-size: 14px;
+}
+
+.auth-page {
+  min-height: calc(100vh - 88px - 60px);
+  display: flex;
+  flex-direction: column;   /* ← ロゴを上部に表示 */
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-logo {
+  margin-bottom: 40px;
+}
+
+.auth-logo-image {
+  width: 250px;
+  height: auto;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 420px;
+  background: #fff;
+  padding: 32px 28px;
+  border-radius: 18px;
+  box-shadow: 0 6px 18px rgba(200, 162, 200, 0.25);
+}

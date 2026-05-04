@@ -9,6 +9,7 @@
             <li class="item-card">
               <%= image_tag item.image, class: "item-thumbnail js-image" %>
 
+              <button type="button" class="item-check-button" aria-label="確認チェック"></button>
               <%= button_to "",
                     place_item_path(@place, item),
                     method: :delete,
@@ -22,7 +23,7 @@
     <% else %>
       <div class="empty-state">
         <p class="empty-title">まだアイテムが登録されていません</p>
-        <p class="empty-text">この場所にしまった物を写真で登録しましょう。</p>
+        <p class="empty-text">この場所にしまった物の写真を登録しましょう！</p>
       </div>
     <% end %>
 
@@ -46,6 +47,13 @@
       <% end %>
       </div>
     </div>
+       
+      <div class="item-count-box">
+        <p>総アイテム数：<span id="total-item-count"><%= @place.items.count %></span></p>
+        <p>チェック数：<span id="checked-item-count">0</span></p>
+      </div>
+
+
 
     <%= link_to "収納場所に戻る", places_path, class: "back-link" %>
   </aside>
