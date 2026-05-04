@@ -73,6 +73,18 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
+  config.action_mailer.delivery_method = :smtp
+
+  config.action_mailer.smtp_settings = {
+  address: "smtp-relay.brevo.com",
+  port: 587,
+  domain: ENV["APP_HOST"],
+  user_name: ENV["BREVO_USER"],
+  password: ENV["BREVO_PASSWORD"],
+  authentication: :login,
+  enable_starttls_auto: true
+}
+
   config.action_mailer.default_url_options = {
   host: 'graduation-app-m7ki.onrender.com',
   protocol: 'https'
