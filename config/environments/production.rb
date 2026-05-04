@@ -74,7 +74,7 @@ Rails.application.configure do
   config.action_mailer.perform_caching = false
 
   config.action_mailer.default_url_options = {
-  host: ENV['graduation-app-m7ki.onrender.com'],
+  host: 'graduation-app-m7ki.onrender.com',
   protocol: 'https'
 }
 
