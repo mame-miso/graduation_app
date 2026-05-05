@@ -68,6 +68,7 @@ Rails.application.configure do
   # config.cache_store = :mem_cache_store
 
 
+config.log_level = :debug
 config.action_mailer.perform_caching = false
 config.action_mailer.raise_delivery_errors = true
 
@@ -80,7 +81,7 @@ config.action_mailer.delivery_method = :smtp
 
 config.action_mailer.smtp_settings = {
   address: "smtp-relay.brevo.com",
-  port: 587,
+  port: 2525,
   domain: "graduation-app-m7ki.onrender.com",
   user_name: ENV["BREVO_USER"],
   password: ENV["BREVO_PASSWORD"],
