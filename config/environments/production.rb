@@ -80,7 +80,7 @@ config.action_mailer.delivery_method = :smtp
 
 config.action_mailer.smtp_settings = {
   address: "smtp-relay.brevo.com",
-  port: 2525,
+  port: 587,
   domain: "graduation-app-m7ki.onrender.com",
   user_name: ENV["BREVO_USER"],
   password: ENV["BREVO_PASSWORD"],
