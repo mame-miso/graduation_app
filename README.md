@@ -1,24 +1,74 @@
-# README
+### アプリ概要
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+「どこに何をしまったか分からない」を解決する、写真ベースの収納管理アプリです。
 
-Things you may want to cover:
+収納時に「しまう物」と「場所」を撮影し、場所ごとに紐づけて管理します。
+名前付けや分類を行わず、写真だけで直感的に探せるのが特徴です。
 
-* Ruby version
+### 解決する課題
 
-* System dependencies
+探し物をするとき、人は「名前」ではなく「見た目（イメージ）」で探します。
 
-* Configuration
+しかし実際の収納は、
 
-* Database creation
+名前をつける
+分類する
+覚えておく
 
-* Database initialization
+といった“人の努力”に依存しています。
 
-* How to run the test suite
+その結果、
 
-* Services (job queues, cache servers, search engines, etc.)
+思い出せない
+分類と探す時の認識がズレる
+結局すべて探す
 
-* Deployment instructions
+という問題が発生します。
 
-* ...
+### 本アプリは
+「見れば分かる」仕組みにすることで、記憶に頼らない管理を実現します。
+
+### ターゲットユーザー
+20〜40代のスマホ利用者
+収納はするが整理が苦手な人
+「あれどこだっけ？」が日常的に発生する人
+※自分自身の課題から着想しています
+
+### 主な機能
+収納場所の登録（画像付き）
+アイテムの写真登録（カメラ対応）
+場所ごとの一覧表示
+確認済みチェック機能
+画像のモーダル表示
+
+収納場所を登録
+物を撮影して紐づけ
+写真から直感的に探す
+
+### 工夫したポイント
+モバイル前提のUI設計
+片手操作・直感操作を意識
+カメラベースの登録
+入力の手間を削減し継続しやすく
+確認済みチェック機能
+「探したかどうか」を可視化しUX改善
+モーダルによる画像拡大
+詳細確認をスムーズに
+
+### テストアカウント
+メール: test@example.com
+パスワード: password
+
+### 本番環境
+https://graduation-app-m7ki.onrender.com
+
+### 使用技術
+Ruby on Rails
+MySQL
+Docker（開発環境の統一）
+Render（デプロイ）
+Brevo（メール送信）
+
+### メール機能
+パスワードリセット対応
+Brevo（SMTP）を利用
