@@ -105,7 +105,7 @@ html, body {
 }
 
 .footer-logo-img {
-  height: 32px;
+  height: 36px;
 }
 
 /* 中央 */
@@ -118,7 +118,7 @@ html, body {
 
 .footer-icon {
   justify-self: end;
-  font-size: 24px;
+  font-size: 34px;
   color: #fff;
   cursor: pointer;
   z-index: 1100;
@@ -134,7 +134,7 @@ html, body {
   width: 90%;
   max-width: 900px;
   margin: 0 auto;
-  padding: 24px 0 96px;
+  padding: 24px 0 120px 0;
 }
 
 /* =====================
@@ -389,7 +389,7 @@ input[type="file"] {
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.6);
   border: none;
   cursor: pointer;
   display: flex;
@@ -550,6 +550,7 @@ input[type="file"] {
   font-size: 22px;
   padding: 12px 24px;
   border-radius: 999px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 /* =====================
@@ -616,12 +617,12 @@ input[type="file"] {
 
 .item-delete-button {
   position: absolute;
-  top: 18px;
-  right: 18px;
-  width: 42px;
-  height: 42px;
+  top: 12px;
+  right: 12px;
+  width: 28px;   /* ← 小さく */
+  height: 28px;  /* ← 小さく */
   border-radius: 50%;
-  background: rgba(0, 0, 0, 0.45);
+  background: rgba(0, 0, 0, 0.5);
   border: none;
   cursor: pointer;
   font-size: 0;
@@ -631,12 +632,12 @@ input[type="file"] {
 .item-delete-button::after {
   content: "";
   position: absolute;
-  width: 20px;
+  width: 14px;
   height: 2px;
   background: #fff;
   border-radius: 2px;
-  left: 11px;
-  top: 20px;
+  left: 7px;
+  top: 13px;
 }
 
 .item-delete-button::before {
@@ -812,7 +813,7 @@ input[type="file"] {
   height: 42px;
   border-radius: 50%;
   border: 3px solid #fff;
-  background: rgba(200, 180, 212, 0.45);
+  background: rgba(58, 58, 58, 0.45);
   cursor: pointer;
   z-index: 2;
 }
@@ -888,9 +889,11 @@ input[type="file"] {
 
 .auth-logo {
   margin-bottom: 40px;
+  text-align: center;  /* テキストも中央揃え */
 }
 
 .auth-logo-image {
+  align-items: center;
   width: 250px;
   height: auto;
   filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
@@ -903,4 +906,33 @@ input[type="file"] {
   padding: 32px 28px;
   border-radius: 18px;
   box-shadow: 0 6px 18px rgba(200, 162, 200, 0.25);
+}
+
+.container {
+  padding-bottom: 120px;
+}
+
+/* =====================
+  チェック
+===================== */
+
+.item-card.checked img {
+  opacity: 0.4;
+}
+
+.item-card.checked::after {
+  content: "✔ 確認済み";
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  background: #000;
+  color: #fff;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 8px;
+}
+
+.form-actions {
+  margin-top: 16px;
+  justify-content: center;
 }

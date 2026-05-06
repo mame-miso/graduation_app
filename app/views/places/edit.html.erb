@@ -11,7 +11,7 @@
 <div class="card">
   <%= form_with model: @place do |f| %>
     <div class="form-group">
-      <%= f.label :cover_image, "場所の写真（写真を変更する場合は、新しい写真を選択してください）" %>
+      <%= f.label :name, "場所の写真" %>
       <%= f.file_field :cover_image,
         accept: "cover_image/*",
         capture: "environment",
@@ -28,7 +28,7 @@
     <% end %>
 
     <div class="form-group">
-      <%= f.label :name, "場所名（任意）" %>
+      <%= f.label :name, "場所名" %>
       <%= f.text_field :name %>
     </div>
 
@@ -36,4 +36,8 @@
       <%= f.submit "更新" %>
     </div>
   <% end %>
+</div>
+
+<div class="form-actions">
+  <%= link_to "← 収納場所へ戻る", places_path, class: "button secondary-button " %>
 </div>

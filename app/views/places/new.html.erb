@@ -7,11 +7,11 @@
   </div>
 <% end %>
 <div class="card">
-  <p>場所名または場所の写真、どちらかを登録してください。場所名はあとから修正できます。</p>
+  <p>場所名または写真、どちらかを登録してください。場所名はあとから修正できます。</p>
 
   <%= form_with model: @place do |f| %>
     <div class="form-group">
-      <%= f.label :cover_image, "場所の写真（任意）" %>
+      <%= f.label :cover_image, "写真（任意）" %>
       <%= f.file_field :cover_image,
         accept: "cover_image/*",
         capture: "environment",

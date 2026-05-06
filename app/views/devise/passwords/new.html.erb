@@ -3,6 +3,7 @@
 <div class="auth-page">
   <div class="auth-logo">
     <%= image_tag "Are_Koko.svg", alt: "あれ??ここ！", class: "auth-logo-image" %>
+    <p>「あれ」が「どこにあるか」を写真で管理</p>
   </div>
 
   <div class="auth-card">
@@ -10,7 +11,7 @@
 
     <p class="auth-description">
       登録したメールアドレスを入力してください。<br>
-      再設定用のリンクを送信します。
+      再設定用のメールをお送りします。
     </p>
 
     <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
